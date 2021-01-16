@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+<head>
+  <title>Wee02 Exercises</title>
+  <script>
+
+function clearOutput(){
+	document.getElementById('output').innerHTML = "";
+}
+
+function ex21(){
+	clearOutput();
+	for (let line = "#"; line.length < 10; line += "#")
+		document.getElementById('output').innerHTML = line;
+}
+
+
+function ex22(){
+	clearOutput();
+	for (let n = 1; n <= 100; n++) {
+		let output = "";
+		if (n % 3 == 0) output += "Fizz";
+		if (n % 5 == 0) output += "Buzz";
+		document.getElementById('output').innerHTML = output || n;
+	}
+}
+ 
+
+function ex23(){
+	clearOutput();
+	let size = 8;
+	
+	let board = "";
+	
+	for (let y = 0; y < size; y++) {
+	for (let x = 0; x < size; x++) {
+		if ((x + y) % 2 == 0) {
+		board += " ";
+		} else {
+		board += "#";
+		}
+	}
+	board += "\n";
+	}
+	
+	document.getElementById('output').innerHTML = board;
+}
+ 
+
+
+function min(a, b) {
+	if (a < b) return a;
+	else return b;
+}
+
+function ex31(){
+	clearOutput();
+	let finalResult = min(0, 10) + "</br>";
+	finalResult = finalResult + min(0, -10);
+	document.getElementById('output').innerHTML = finalResult;
+}	
+
+
+function isEven(n) {
+  if (n == 0) return true;
+  else if (n == 1) return false;
+  else if (n < 0) return isEven(-n);
+  else return isEven(n - 2);
+}
+
+function ex32(){
+	clearOutput();
+	let finalResult = isEven(42) + "</br>";
+	finalResult = finalResult + isEven(25) + "</br>";
+	finalResult = finalResult + isEven(-1) + "</br>";
+	document.getElementById('output').innerHTML = finalResult;
+}
+ 
+
+
+
+function countChar(string, ch) {
+  let counted = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == ch) {
+      counted += 1;
+    }
+  }
+  return counted;
+}
+
+function countBs(string) {
+  return countChar(string, "B");
+}
+
+function ex33(){
+	clearOutput();
+	let finalResult = countBs("BEEEFFDBBDDB") + "</br>";
+	finalResult = finalResult + countChar("dfsksdksdfk", "k") + "</br>";
+	document.getElementById('output').innerHTML = finalResult;
+}
+
+ 
+
+function range(start, end, step = start < end ? 1 : -1) {
+  let array = [];
+
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) array.push(i);
+  } else {
+    for (let i = start; i >= end; i += step) array.push(i);
+  }
+  return array;
+}
+
+function sum(array) {
+  let total = 0;
+  for (let value of array) {
+    total += value;
+  }
+  return total;
+}
+
+function ex41(){
+	clearOutput();
+	let finalResult = range(1, 10) + "</br>";
+	finalResult = finalResult + range(5, 2, -1) + "</br>";
+	finalResult = finalResult + sum(range(1, 10));
+	document.getElementById('output').innerHTML = finalResult;
+	
+}
+
+ 
+
+
+function reverseArray(array) {
+  let output = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    output.push(array[i]);
+  }
+  return output;
+}
+
+function reverseArrayInPlace(array) {
+  for (let i = 0; i < Math.floor(array.length / 2); i++) {
+    let old = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = old;
+  }
+  return array;
+}
+
+function ex42(){
+	clearOutput();
+	let finalResult = "Reverse array: " + reverseArray(["A", "B", "C"]);
+	let arrayValue = [1, 2, 3, 4, 5];
+	reverseArrayInPlace(arrayValue);
+	finalResult = finalResult + "</br>Array value: " + arrayValue;
+	document.getElementById('output').innerHTML = finalResult;
+}
+
+ 
+
+function arrayToList(array) {
+  let list = null;
+  for (let i = array.length - 1; i >= 0; i--) {
+    list = {value: array[i], rest: list};
+  }
+  return list;
+}
+
+function listToArray(list) {
+  let array = [];
+  for (let node = list; node; node = node.rest) {
+    array.push(node.value);
+  }
+  return array;
+}
+
+function prepend(value, list) {
+  return {value, rest: list};
+}
+
+function nth(list, n) {
+  if (!list) return undefined;
+  else if (n == 0) return list.value;
+  else return nth(list.rest, n - 1);
+}
+
+function ex43(){
+	clearOutput();
+	let finalResult = arrayToList([10, 20]) + "</br>";
+	finalResult = finalResult + listToArray(arrayToList([10, 20, 30])) + "</br>";
+	finalResult = finalResult + prepend(10, prepend(20, null)) + "</br>";
+	finalResult = finalResult + nth(arrayToList([10, 20, 30]), 1);
+	document.getElementById('output').innerHTML = finalResult;
+}
+ 
+
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+  
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object") return false;
+
+  let keysA = Object.keys(a), keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+  }
+
+  return true;
+}
+
+function ex44(){
+	clearOutput();
+	let obj = {here: {is: "an"}, object: 2};
+	let finalResult = deepEqual(obj, obj) + "</br>";
+	finalResult = finalResult + "" + deepEqual(obj, {here: 1, object: 2}) + "</br>";
+	finalResult = finalResult + "" + deepEqual(obj, {here: {is: "an"}, object: 2});
+	document.getElementById('output').innerHTML = finalResult;
+}
+  </script>
+
+  <style>
+   body{
+    background-color: LightGrey;
+   }
+   input{
+  border:none; 
+  border-radius:5px; 
+  box-shadow:0px 0px 5px #666666 inset; 
+  height:25px;
+  width:200px; 
+  text-indent:5px; 
+ } 
+ input:focus { 
+  outline:none;
+   }
+  </style>
+</head>
+
+<body>
+<table style="width:100%">
+<tr>
+<th>
+ <h1>2.1 Piramid</h1>
+ <button onclick="ex21()">2.1</button>
+ 
+  <h1>2.2 Fizz-Buzz</h1>
+ <button onclick="ex22()">2.2</button>
+ 
+   <h1>2.3 Board</h1>
+ <button onclick="ex23()">2.3</button>
+
+   <h1>3.1 Min</h1>
+ <button onclick="ex31()">3.1</button>
+ 
+    <h1>3.2 isEven</h1>
+ <button onclick="ex32()">3.2</button>
+ 
+    <h1>3.3 Count chars</h1>
+ <button onclick="ex33()">3.3</button>
+ 
+    <h1>4.1 Array</h1>
+ <button onclick="ex41()">4.1</button>
+ 
+    <h1>4.2 Reverse Array</h1>
+ <button onclick="ex42()">4.2</button>
+ 
+    <h1>4.3 List</h1>
+ <button onclick="ex43()">4.3</button>
+ 
+     <h1>4.4 Deep Equal</h1>
+ <button onclick="ex44()">4.4</button>
+ </th>
+ <th>
+  <h1>OUTPUT</h1>
+ <div id="output"></div>
+ </th>
+ </tr>
+ <div><a href="../index.html">Main Menu</a></div>
+</body>
+</html>
