@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>W02 Team Activity</title>
+  </head>
+  <body>
+    <h1>W02 Team Activity</h1>
+    
+    <div id="output"></div>
+
+    <h2>Exercises 1 and 2</h2>
+    
+    <input type="text" id="input">
+    <input type="button" onclick="echo();" value="Go">
+    
+    <script>
+      var output = document.getElementById('output');
+    
+      function echo() {
+        var inputValue = document.getElementById('input').value;
+//         output.innerHTML = inputValue;
+                        
+//         if (parseInt(inputValue)) {
+//           var n = parseInt(inputValue);
+//           output.innerHTML = sum(n);
+//         } else {
+//           alert('Not a number');
+//         }
+
+        output.innerHTML = parseInt(inputValue) ? sum(parseInt(inputValue)) : alert('Not a number');
+
+      }
+      
+      function sum(n) {
+        return n * (n+1) / 2;
+      }
+      
+    </script>
+    
+
+    <h2>Exercise 3</h2>
+
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <input type="button" onclick="getAndAdd();" value="Add">
+    <input type="button" onclick="getAndSubtract();" value="Subtract">
+    <input type="button" onclick="getAndMultiply();" value="Multiply">
+
+    <script>
+      var input1Value = document.getElementById('input1').value;
+      var input2Value = document.getElementById('input2').value;
+
+      function getAndAdd() {
+        output.innerHTML = add(input1Value, input2Value);
+      }
+      function getAndSubtract() {
+        output.innerHTML = subtract(input1Value, input2Value);
+      }
+      function getAndMultiply() {
+        output.innerHTML = multiply(input1Value, input2Value);
+      }
+    
+      // Function declaration
+      function add(n1, n2) {
+        return parseInt(n1) + parseInt(n2);
+      }
+
+      // Function expression
+      var subtract = function(n1, n2) {
+        return parseInt(n1) - parseInt(n2);
+      }
+      
+      // Arrow function
+      var multiply = (n1, n2) => parseInt(n1) * parseInt(n2);
+
+      // Function constructor (for academic purposes...)
+      var divide = new Function('return parseInt(n1) / parseInt(n2);');
+      
+      
+      // Examples of when you might use function expression or arrow function:
+
+//       fetch('https://www.google.com/api')
+//         .then(data => console.log(data));
+    
+//       button1.addEventListener('click', function(n1, n2) {
+//         return parseInt(n1) - parseInt(n2);
+//       });
+
+//       button1.addEventListener('click', (n1, n2) => { parseInt(n1) - parseInt(n2) });
+
+    
+    </script>
+
+
+
+
+
+  </body>
+</html>
