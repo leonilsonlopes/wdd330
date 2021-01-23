@@ -6,16 +6,16 @@
   </head>
   <body>
    <div><a href="../index.html">Main Menu</a></div>
-    <h1>W03 Exercises - Dynamic property</h1>
+    <h1>W03 Exercises - Strech bar</h1>
     
 <!-- CHAPTER 15 -->
 
 <p>Drag the bar to change its width:</p>
-<div style="background: orange; width: 60px; height: 20px">
+<div id="stretch-bar" style="background: orange; width: 60px; height: 20px">
 </div>
 <script>
   let lastX; // Tracks the last observed mouse X position
-  let bar = document.querySelector("div");
+  let bar = document.getElementById("stretch-bar");
   bar.addEventListener("mousedown", event => {
     if (event.button == 0) {
       lastX = event.clientX;
@@ -31,6 +31,7 @@
       let dist = event.clientX - lastX;
       let newWidth = Math.max(10, bar.offsetWidth + dist);
       bar.style.width = newWidth + "px";
+	  console.log("width: " + newWidth);
       lastX = event.clientX;
     }
   }
