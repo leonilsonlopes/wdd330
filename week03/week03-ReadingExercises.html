@@ -8,6 +8,8 @@
    <div><a href="../index.html">Main Menu</a></div>
     <h1>W03 Exercises</h1>
     
+<!-- CHAPTER 14 -->
+
 
 <p style="text-align: center">
   <img src="img/leo.jpg" style="position: relative">
@@ -20,15 +22,41 @@
     if (lastTime != null) {
       angle += (time - lastTime) * 0.001;
     }
-    leo.style.top = (Math.sin(angle) * 20) + "px";
-    leo.style.left = (Math.cos(angle) * 200) + "px";
+    leo.style.top = (Math.sin(angle) * 30) + "px";
+    leo.style.left = (Math.cos(angle) * 300) + "px";
     requestAnimationFrame(newTime => animate(newTime, time));
   }
   requestAnimationFrame(animate);
     
     </script>
 
+<!-- CHAPTER 15 -->
 
+<p>Drag the bar to change its width:</p>
+<div style="background: orange; width: 60px; height: 20px">
+</div>
+<script>
+  let lastX; // Tracks the last observed mouse X position
+  let bar = document.querySelector("div");
+  bar.addEventListener("mousedown", event => {
+    if (event.button == 0) {
+      lastX = event.clientX;
+      window.addEventListener("mousemove", moved);
+      event.preventDefault(); // Prevent selection
+    }
+  });
+
+  function moved(event) {
+    if (event.buttons == 0) {
+      window.removeEventListener("mousemove", moved);
+    } else {
+      let dist = event.clientX - lastX;
+      let newWidth = Math.max(10, bar.offsetWidth + dist);
+      bar.style.width = newWidth + "px";
+      lastX = event.clientX;
+    }
+  }
+</script>
 
 
 
