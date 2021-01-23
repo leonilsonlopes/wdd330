@@ -121,15 +121,16 @@
 <div style="background: orange; width: 60px; height: 20px">
 </div>
 <script>
-  let lastX; // Tracks the last observed mouse X position
-  let bar = document.querySelector("div");
+
+  try{var lastX; // Tracks the last observed mouse X position
+  var bar = document.querySelector("div");
   bar.addEventListener("mousedown", event => {
     if (event.button == 0) {
       lastX = event.clientX;
       window.addEventListener("mousemove", moved);
       event.preventDefault(); // Prevent selection
     }
-  });
+  });}catch(e){__sandbox.error(e);}
 
   function moved(event) {
     if (event.buttons == 0) {
@@ -141,6 +142,9 @@
       lastX = event.clientX;
     }
   }
+
+//# sourceURL=coded3b7cd1b
+;__sandbox.callbacks['37d402c8']();
 </script>
 
 
