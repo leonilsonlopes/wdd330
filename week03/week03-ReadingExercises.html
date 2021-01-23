@@ -118,19 +118,18 @@
 <h1>15 - Stretch bar</h1>
 
 <p>Drag the bar to change its width:</p>
-<div style="background: orange; width: 60px; height: 20px">
+<div id="strech-bar" style="background: orange; width: 60px; height: 20px">
 </div>
 <script>
-
-  try{var lastX; // Tracks the last observed mouse X position
-  var bar = document.querySelector("div");
+  let lastX; // Tracks the last observed mouse X position
+  let bar = document.getElementById("stretch-bar");
   bar.addEventListener("mousedown", event => {
     if (event.button == 0) {
       lastX = event.clientX;
       window.addEventListener("mousemove", moved);
       event.preventDefault(); // Prevent selection
     }
-  });}catch(e){__sandbox.error(e);}
+  });
 
   function moved(event) {
     if (event.buttons == 0) {
@@ -142,9 +141,6 @@
       lastX = event.clientX;
     }
   }
-
-//# sourceURL=coded3b7cd1b
-;__sandbox.callbacks['37d402c8']();
 </script>
 
 
