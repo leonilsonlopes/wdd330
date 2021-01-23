@@ -17,19 +17,21 @@
         </div>
       </header>
       <main>
-        <h1>Ponder: Team Activity</h1>
+        <h1>Ponder Team Activity: Quakes near me</h1>
         <hr />
         <h2>Overview</h2>
         <p>
-          This activity will review the built in array methods. This was
-          borrowed from a free javascript course from Wes Bos
-          <a href="https://javascript30.com" target="_blank" rel="noreferrer"
-            >Javascript30</a
-          >. If you sign up you will get access to video solutions for all of
-          the exercises...including the one that this activity is based on:
-          Array Cardio Day 1. If you decide to sign up (I actually would
-          recommend this)...try them all first before looking at the solutions!
+          This week we will revisit the topics of MVC and Fetch to build a
+          simple app to show any earthquake within a certain radius of the
+          location of the app. To do this we will also have to access the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation"
+            target="_blank"
+            rel="noreferrer"
+            >Geolocation interface</a
+          >.
         </p>
+
         <h2>Instructions</h2>
         <p>
           Complete the following assignment as a team. Designate one team member
@@ -45,24 +47,34 @@
             <li>
               <!-- BEGIN STEP -->
               <p>
-                Download the
-                <a
-                  href="../solutions/week03/index-START.html"
-                  target="_blank"
-                  rel="noreferrer"
-                  >starter code</a
+                Open
+                <a href="../resources/quakes.html" target="_blank"
+                  >the quakes activity</a
                 >
-                and complete exercises 1-5
+                and work through step 9.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>
+                Step 10.
               </p>
               <p>
-                Here is a link to a good summary of a few of the common array
-                methods
-                <a
-                  href="https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Array Iteration Thoughts</a
-                >
+                Create a functional app by finishing step 10.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>
+                Style it.
+              </p>
+
+              <p>
+                Add CSS to make the application look and work better.
               </p>
 
               <!-- END STEP -->
@@ -72,28 +84,42 @@
           <ol class="bigSteps">
             <li>
               <!-- BEGIN STEP -->
-              <p>Complete exercise #6</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete exercise #7-8</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete Array Cardio Day 2</p>
               <p>
-                Download the
+                Settings
+              </p>
+
+              <p>
+                It would be great if we could specify the radius we would like
+                to include in the query for earthquakes. Make it so. You might
+                also allow the use to indicate the dates they would like to
+                search over as well.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Back button</p>
+              <p>
+                We can drill down into a quake's details...but we currently have
+                no way to get back to the list other than a refresh of the page.
+                Add a 'Back' button.
+              </p>
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Routing</p>
+              <p>
+                What if we wanted to add more functionality? A Routing system
+                would make this easier. See if you can take the
                 <a
-                  href="../solutions/week03/index-START2.html"
+                  href="https://github.com/byui-cit/cit261/tree/gh-pages/examples/spa-example-complete"
                   target="_blank"
                   rel="noreferrer"
-                  >part 2 starter code</a
+                  >Routing module</a
                 >
-                and complete the exercises
+                from the SPA example app that we did earlier and integrate it
+                into this app.
               </p>
             </li>
           </ol>
@@ -117,11 +143,18 @@
         <p>
           After working with your team for the one hour activity,
           <a
-            href="../solutions/week03/index-FINISHED.html"
+            href="https://github.com/byui-cit/cit261/tree/gh-pages/examples/quakes"
             target="_blank"
             rel="noreferrer"
             >click here for the instructor's solution</a
-          >.
+          >
+          of this project. (Or
+          <a
+            href="https://github.com/byui-cit/cit261/tree/gh-pages/examples/quakes/finished"
+            target="_blank"
+            rel="noreferrer"
+            >here for the version with the routing stretch goal</a
+          >)
         </p>
         <h2>Submission</h2>
         <p>

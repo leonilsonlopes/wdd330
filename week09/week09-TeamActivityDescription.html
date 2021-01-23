@@ -17,19 +17,19 @@
         </div>
       </header>
       <main>
-        <h1>Ponder: Team Activity</h1>
+        <h1>Ponder Team Activity: DrumKit</h1>
         <hr />
         <h2>Overview</h2>
         <p>
-          This activity will review the built in array methods. This was
-          borrowed from a free javascript course from Wes Bos
+          This activity will introduce you to manipulating transitions and
+          transforms with Javascript. We will also get experience listening for
+          key presses in the browser. The challenge for today again comes from a
+          free javascript course from Wes Bos
           <a href="https://javascript30.com" target="_blank" rel="noreferrer"
             >Javascript30</a
-          >. If you sign up you will get access to video solutions for all of
-          the exercises...including the one that this activity is based on:
-          Array Cardio Day 1. If you decide to sign up (I actually would
-          recommend this)...try them all first before looking at the solutions!
+          >.
         </p>
+
         <h2>Instructions</h2>
         <p>
           Complete the following assignment as a team. Designate one team member
@@ -47,22 +47,47 @@
               <p>
                 Download the
                 <a
-                  href="../solutions/week03/index-START.html"
+                  href="../solutions/week09/javascript30-drums.zip"
                   target="_blank"
-                  rel="noreferrer"
                   >starter code</a
                 >
-                and complete exercises 1-5
+                and add the Javascript necessary to make the appropriate sound
+                file play when the corresponding key is pressed.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>
+                Make it quick.
               </p>
               <p>
-                Here is a link to a good summary of a few of the common array
-                methods
+                You may have noticed that if you press a key rapidly the sound
+                file does not immediately re-play. Modify your code to make the
+                sound restart each time the same key is pressed. (Hint use
+                <code>console.dir</code> to take a good look at the
+                <kbd>audio</kbd> element)
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>
+                Style it.
+              </p>
+
+              <p>
+                Add the <kbd>playing</kbd> class to a button when it's key is
+                pressed. Then remove it after the appropriate length of time.
+                (Hint: check out the
                 <a
-                  href="https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff"
+                  href="https://developer.mozilla.org/en-US/docs/Web/Events"
                   target="_blank"
                   rel="noreferrer"
-                  >Array Iteration Thoughts</a
-                >
+                  >list of possible events</a
+                >.)
               </p>
 
               <!-- END STEP -->
@@ -72,28 +97,22 @@
           <ol class="bigSteps">
             <li>
               <!-- BEGIN STEP -->
-              <p>Complete exercise #6</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete exercise #7-8</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete Array Cardio Day 2</p>
               <p>
-                Download the
-                <a
-                  href="../solutions/week03/index-START2.html"
-                  target="_blank"
-                  rel="noreferrer"
-                  >part 2 starter code</a
-                >
-                and complete the exercises
+                Move it around
+              </p>
+
+              <p>
+                Each time a key is pressed move the corresponding button down
+                10px.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Reset it</p>
+              <p>
+                After 10 presses of a key, reset the position of it's button.
               </p>
             </li>
           </ol>
@@ -117,7 +136,7 @@
         <p>
           After working with your team for the one hour activity,
           <a
-            href="../solutions/week03/index-FINISHED.html"
+            href="https://github.com/wesbos/JavaScript30/tree/master/01%20-%20JavaScript%20Drum%20Kit"
             target="_blank"
             rel="noreferrer"
             >click here for the instructor's solution</a

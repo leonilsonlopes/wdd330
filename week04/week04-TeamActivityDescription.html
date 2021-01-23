@@ -21,14 +21,15 @@
         <hr />
         <h2>Overview</h2>
         <p>
-          This activity will review the built in array methods. This was
-          borrowed from a free javascript course from Wes Bos
-          <a href="https://javascript30.com" target="_blank" rel="noreferrer"
-            >Javascript30</a
-          >. If you sign up you will get access to video solutions for all of
-          the exercises...including the one that this activity is based on:
-          Array Cardio Day 1. If you decide to sign up (I actually would
-          recommend this)...try them all first before looking at the solutions!
+          This activity will review DOM manipulation with Javascript and events.
+          (<a
+            href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read"
+            target="_blank"
+            rel="noreferrer"
+            >Chapters 6-7</a
+          >
+          from Javascript: Novice to Ninja). We will do this by building an
+          HTML/CSS/JS based Tic-Tac-Toe board.
         </p>
         <h2>Instructions</h2>
         <p>
@@ -45,26 +46,34 @@
             <li>
               <!-- BEGIN STEP -->
               <p>
-                Download the
-                <a
-                  href="../solutions/week03/index-START.html"
-                  target="_blank"
-                  rel="noreferrer"
-                  >starter code</a
-                >
-                and complete exercises 1-5
+                Build a 3X3 board in HTML and CSS.
               </p>
               <p>
-                Here is a link to a good summary of a few of the common array
-                methods
-                <a
-                  href="https://gist.github.com/ljharb/58faf1cfcb4e6808f74aae4ef7944cff"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Array Iteration Thoughts</a
-                >
+                You could do this with either a table element, or a collection
+                of divs. Both have their advantages and disadvantages.
               </p>
 
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Attach a <code>touchend</code> listener to the board.</p>
+              <p>
+                When a cell is touched it should add either an 'X or an 'O',
+                depending on whether it is player 1 or player 2's turn.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>
+                Add a reset button.
+              </p>
+              <p>
+                When touched the reset button should remove all of the marks
+                from the board.
+              </p>
               <!-- END STEP -->
             </li>
           </ol>
@@ -72,28 +81,48 @@
           <ol class="bigSteps">
             <li>
               <!-- BEGIN STEP -->
-              <p>Complete exercise #6</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete exercise #7-8</p>
-
-              <!-- END STEP -->
-            </li>
-            <li>
-              <!-- BEGIN STEP -->
-              <p>Complete Array Cardio Day 2</p>
               <p>
-                Download the
-                <a
-                  href="../solutions/week03/index-START2.html"
-                  target="_blank"
-                  rel="noreferrer"
-                  >part 2 starter code</a
-                >
-                and complete the exercises
+                If your board looks like the first image below...make it look
+                like the second.
+              </p>
+              <div class="fig-block">
+                <figure>
+                  <img
+                    src="../images/tic-board-1.png"
+                    alt="Borders all around the outside, incorrect"
+                  />
+                  <figcaption>Incorrect borders</figcaption>
+                </figure>
+                <figure>
+                  <img
+                    src="../images/tic-board-2.png"
+                    alt="Onlt borders on the inside, correct"
+                  />
+                  <figcaption>Correct borders</figcaption>
+                </figure>
+              </div>
+              <p>
+                Hint: look into <code>:nth-child(n)</code>,
+                <code>:last-child</code>, etc for help to target specific cells
+                to turn borders on or off.
+              </p>
+
+              <!-- END STEP -->
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Add Game logic</p>
+              <p>
+                Right now the players have to decide who won, or whether it was
+                a tie. Add some game logic to figure out when the game should
+                result in a tie.
+              </p>
+            </li>
+            <li>
+              <!-- BEGIN STEP -->
+              <p>Add More Game logic</p>
+              <p>
+                Add the logic to figure out when someone wins.
               </p>
             </li>
           </ol>
@@ -117,7 +146,7 @@
         <p>
           After working with your team for the one hour activity,
           <a
-            href="../solutions/week03/index-FINISHED.html"
+            href="https://github.com/byui-cit/cit261/tree/gh-pages/solutions/week04"
             target="_blank"
             rel="noreferrer"
             >click here for the instructor's solution</a
