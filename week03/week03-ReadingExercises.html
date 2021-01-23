@@ -91,7 +91,7 @@
 </script>
 
 
-<p>14.3 Animated Object</p>
+<h1>14.3 Animated Object</h1>
 
 <p style="text-align: center">
   <img src="img/leo.jpg" style="position: relative">
@@ -114,6 +114,8 @@
     </script>
 
 <!-- CHAPTER 15 -->
+
+<h1>15 - Stretch bar</h1>
 
 <p>Drag the bar to change its width:</p>
 <div style="background: orange; width: 60px; height: 20px">
@@ -140,6 +142,76 @@
     }
   }
 </script>
+
+
+
+
+<h1>15.1 - Balloon</h1>
+<p>🎈</p>
+
+<script>
+  let p = document.querySelector("p");
+  let size;
+  function setSize(newSize) {
+    size = newSize;
+    p.style.fontSize = size + "px";
+  }
+  setSize(20);
+
+  function handleArrow(event) {
+    if (event.key == "ArrowUp") {
+      if (size > 70) {
+        p.textContent = "💥";
+        document.body.removeEventListener("keydown", handleArrow);
+      } else {
+        setSize(size * 1.1);
+        event.preventDefault();
+      }
+    } else if (event.key == "ArrowDown") {
+      setSize(size * 0.9);
+      event.preventDefault();
+    }
+  }
+  document.body.addEventListener("keydown", handleArrow);
+</script>
+
+
+
+<h1>15.2 - Mouse trail</h1>
+
+<style>
+  .trail { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    border-radius: 3px;
+    background: teal;
+  }
+  body {
+    height: 300px;
+  }
+</style>
+
+
+<script>
+  let dots = [];
+  for (let i = 0; i < 12; i++) {
+    let node = document.createElement("div");
+    node.className = "trail";
+    document.body.appendChild(node);
+    dots.push(node);
+  }
+  let currentDot = 0;
+  
+  window.addEventListener("mousemove", event => {
+    let dot = dots[currentDot];
+    dot.style.left = (event.pageX - 3) + "px";
+    dot.style.top = (event.pageY - 3) + "px";
+    currentDot = (currentDot + 1) % dots.length;
+  });
+</script>
+
+
+
 
 
 
