@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8" />
+    <title>Tic Tac Toe</title>
+    <style>
+		tr, td {
+			border: 1px solid black;
+			height: 150px;
+		}
+		
+		table {
+			border-collapse: collapse;
+			width: 450px;
+		}
+    </style>
+  </head>
+  <body>
+	<table>
+		<tr>
+			<td id="1x1" onclick="clickOn('1x1')"></td>
+			<td id="1x2" onclick="clickOn('1x2')"></td>
+			<td id="1x3" onclick="clickOn('1x3')"></td>
+		</tr>
+		<tr>
+			<td id="2x1" onclick="clickOn('2x1')"></td>
+			<td id="2x2" onclick="clickOn('2x2')"></td>
+			<td id="2x3" onclick="clickOn('2x3')"></td>
+		</tr>
+		<tr>
+			<td id="3x1" onclick="clickOn('3x1')"></td>
+			<td id="3x2" onclick="clickOn('3x2')"></td>
+			<td id="3x3" onclick="clickOn('3x3')"></td>
+		</tr>
+	
+	</table>
+	
+	<button type="button" onclick="location.reload();">RESET</button>
+
+    <script>
+	
+	let lastPlay = "O";
+	let finishMessage = "";
+	let playCount = 0;
+	
+	let turnsForX = "";
+	let trunsForO = "";
+		
+	function clickOn(cell){
+	
+		playCount++
+	
+		if(finishMessage != ""){
+			alert("THIS GAME HAS FINISHED!\n\n" + finishMessage);
+			return;			
+		}
+
+		let selectedCell = document.getElementById(cell);
+
+		if(selectedCell.innerHTML == "" ){
+		
+			if(lastPlay == "O"){			
+				lastPlay = "X";
+				turnsForX = cell + ",";
+			}else{
+				lastPlay = "O";
+				turnsForO = cell + ",";
+			}
+			document.getElementById(cell).innerHTML = lastPlay;
+			
+		}else{
+			alert("OCCUPIED!!!");
+		}
+
+		
+		//check winner
+		if(	
+			//Line 1 horizontal
+			(document.getElementById('1x1').innerHTML != "" &&
+			document.getElementById('1x1').innerHTML == document.getElementById('1x2').innerHTML &&
+			document.getElementById('1x2').innerHTML == document.getElementById('1x3').innerHTML) ||
+			//Line 2 horizontal
+			(document.getElementById('2x1').innerHTML != "" &&
+			document.getElementById('2x1').innerHTML == document.getElementById('2x2').innerHTML &&
+			document.getElementById('2x2').innerHTML == document.getElementById('2x3').innerHTML) ||
+			//Line 3 horizontal
+			(document.getElementById('3x1').innerHTML != "" &&
+			document.getElementById('3x1').innerHTML == document.getElementById('3x2').innerHTML &&
+			document.getElementById('3x2').innerHTML == document.getElementById('3x3').innerHTML) ||
+			
+			//Line 1 Vertical
+			(document.getElementById('1x1').innerHTML != "" &&
+			document.getElementById('1x1').innerHTML == document.getElementById('2x1').innerHTML &&
+			document.getElementById('2x1').innerHTML == document.getElementById('3x1').innerHTML) ||
+			//Line 2 Vertical
+			(document.getElementById('1x2').innerHTML != "" &&
+			document.getElementById('1x2').innerHTML == document.getElementById('2x2').innerHTML &&
+			document.getElementById('2x2').innerHTML == document.getElementById('3x2').innerHTML) ||
+			//Line 3 Vertical
+			(document.getElementById('1x3').innerHTML != "" &&
+			document.getElementById('1x3').innerHTML == document.getElementById('2x3').innerHTML &&
+			document.getElementById('2x3').innerHTML == document.getElementById('3x3').innerHTML) ||
+			
+			//Line Diagonal 1
+			(document.getElementById('1x1').innerHTML != "" &&
+			document.getElementById('1x1').innerHTML == document.getElementById('2x2').innerHTML &&
+			document.getElementById('2x2').innerHTML == document.getElementById('3x3').innerHTML) ||
+			//Line Diagonal 2
+			(document.getElementById('1x3').innerHTML != "" &&
+			document.getElementById('1x3').innerHTML == document.getElementById('2x2').innerHTML &&
+			document.getElementById('2x2').innerHTML == document.getElementById('3x1').innerHTML)
+			
+			){
+				finishMessage = "WINNER IS: " + lastPlay;
+				alert(finishMessage);
+				
+			}else if(playCount == 9){
+				finishMessage = "NO WINNER - TIE!"
+				alert(finishMessage);
+			}
+			
+
+	
+		
+	}
+	
+
+	
+	
+
+    </script>
+  </body>
+</html>
