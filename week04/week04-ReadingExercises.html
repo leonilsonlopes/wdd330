@@ -2,18 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>W03 Exercises</title>
+    <title>W04 Exercises</title>
   </head>
   <body>
    <div><a href="../index.html">Main Menu</a></div>
-    <h1>W03 Exercises</h1>
+    <h1>W04 Exercises</h1>
     
 <!-- CHAPTER 6 -->
 
-<h1>6.1 - Using class - Vectors</h1>
-
+<h1>6.1 - Using class - Sum of Vectors</h1>
+<button id="run61">Run 6.1</button>
 <div id="61_output"></div>
-
 <script>
 class Vec {
   constructor(x, y) {
@@ -34,17 +33,23 @@ class Vec {
   }
 }
 
-document.getElementById("61_output").innerText = (new Vec(1, 2).plus(new Vec(2, 3)));
-// → Vec{x: 3, y: 5}
-document.getElementById("61_output").innerText = document.getElementById("61_output").innerText + "\n\n" + (new Vec(1, 2).minus(new Vec(2, 3)));
-// → Vec{x: -1, y: -1}
-document.getElementById("61_output").innerText = document.getElementById("61_output").innerText + "\n\n" + (new Vec(3, 4).length);
-// → 5
+document.getElementById("run61").addEventListener('click', function (){	
+
+	document.getElementById("61_output").innerText = JSON.stringify(new Vec(1, 2).plus(new Vec(2, 3)));
+	// → Vec{x: 3, y: 5}
+	document.getElementById("61_output").innerText = document.getElementById("61_output").innerText + "\n\n" + JSON.stringify(new Vec(1, 2).minus(new Vec(2, 3)));
+	// → Vec{x: -1, y: -1}
+	document.getElementById("61_output").innerText = document.getElementById("61_output").innerText + "\n\n" + JSON.stringify(new Vec(3, 4).length);
+	// → 5
+	
+})
+
+
 </script>
 
 
 <h1>6.2 - Using class - Groups</h1>
-
+<button id="run62">Run 6.2</button>
 <div id="62_output"></div>
 
 <script>
@@ -76,22 +81,30 @@ class Group {
   }
 }
 
+document.getElementById("run62").addEventListener('click', function (){	
+
 let group = Group.from([10, 20]);
-document.getElementById("62_output").innerText(group.has(10));
+
+document.getElementById("62_output").innerText = "Group Class is built with array: [10, 20] \n\n";
+
+document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\nGroup object has number 10?: " + (group.has(10).toString());
 // → true
-document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\n" + (group.has(30));
+document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\nGroup object has number 30?: " + (group.has(30).toString());
 // → false
 group.add(10);
 group.delete(10);
-document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\n" + (group.has(10));
+document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\nGroup object add another '10' and after deletes a '10'";
+document.getElementById("62_output").innerText = document.getElementById("62_output").innerText + "\n\nGroup object has number 10?: " + (group.has(10).toString());
+
+});
 </script>
 
 <h1>6.3 - Using class - Iterable Groups</h1>
-
+<button id="run63">Run 6.3</button>
 <div id="63_output"></div>
 
 <script>
-class Group {
+class Group63 {
   constructor() {
     this.members = [];
   }
@@ -111,7 +124,7 @@ class Group {
   }
 
   static from(collection) {
-    let group = new Group;
+    let group = new Group63;
     for (let value of collection) {
       group.add(value);
     }
@@ -141,17 +154,16 @@ class GroupIterator {
   }
 }
 
-for (let value of Group.from(["a", "b", "c"])) {
-  document.getElementById("63_output").innerText = document.getElementById("63_output").innerText + "\n\n" + (value);
-}
+document.getElementById("run63").addEventListener('click', function (){	
+	for (let value of Group63.from(["a", "b", "c"])) {
+	document.getElementById("63_output").innerText = document.getElementById("63_output").innerText + "\n\n" + (value);
+	}
 // → a
 // → b
 // → c
+
+});
 </script>
-
-
-
-
 
 
 
