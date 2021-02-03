@@ -1,4 +1,4 @@
-import HikesController from 'HikesController.js';
+import HikesController from './HikesController.js';
 
 alert("Index.js is called");
 
