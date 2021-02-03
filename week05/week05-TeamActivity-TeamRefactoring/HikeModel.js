@@ -40,6 +40,9 @@ export default class HikeModel {
     
   }
   getAllHikes() {
+	  alert("this: " + JSON.stringify(this.hikeList));
+	  alert("no this: " + JSON.stringify(hikeList));
+	  
     return this.hikeList;
   }
   getHikeByName(hikeName) {
