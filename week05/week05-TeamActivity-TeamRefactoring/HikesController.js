@@ -14,7 +14,7 @@ export default class HikesController {
   showHikeList() {
 	const hikeListElement = document.getElementById("hikes");
 	hikeListElement.innerHTML = "";
-	renderHikeList(this.hikeModel, hikeListElement);
+	this.hikesView.renderHikeList(this.hikeModel, hikeListElement);
   }
 
   showOneHike(hikeName) {
