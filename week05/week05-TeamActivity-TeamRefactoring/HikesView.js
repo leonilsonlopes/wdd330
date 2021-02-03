@@ -5,6 +5,7 @@ export default class HikesView {
         this.imgBasePath = '//byui-cit.github.io/cit261/examples/';
         
     }
+	
   renderHikeList(hikeList, listElement) {
     hikeList.forEach(hike => {
     listElement.appendChild(renderOneHike(hike));
