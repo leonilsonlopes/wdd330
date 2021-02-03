@@ -8,7 +8,7 @@ export default class HikesView {
 	
   renderHikeList(hikeList, listElement) {
     hikeList.forEach(hike => {
-    listElement.appendChild(renderOneHike(hike));
+    listElement.appendChild(this.renderOneHike(hike));
   });
   }
   
