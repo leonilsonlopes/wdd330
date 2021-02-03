@@ -12,7 +12,7 @@ export default class HikesView {
   });
   }
   
-  renderOneHikeLight(hike) {
+  renderOneHike(hike) {
     const item = document.createElement("li");
 
 	item.innerHTML = ` <h2>${hike.name}</h2>
