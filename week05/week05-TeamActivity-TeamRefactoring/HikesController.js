@@ -2,8 +2,6 @@ import HikeModel from './HikeModel.js';
 import HikesView from './HikesView.js';
 
 
-alert("HikesController.js is called");
-
 // Hike controller
 export default class HikesController {
   constructor(parentId) {
