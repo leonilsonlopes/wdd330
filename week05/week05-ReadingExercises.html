@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>W05 Exercises</title>
+  </head>
+  <body>
+   <div><a href="../index.html">Main Menu</a></div>
+    <h1>W05 Exercises</h1>
+    
+<!-- CHAPTER 6 -->
+
+<h1>8.1 - Bugs and Error - Retry</h1>
+<button id="run81">Run 8.1</button>
+<div id="81_output" onclick="run81"></div>
+<script>
+class MultiplicatorUnitFailure extends Error {}
+
+function primitiveMultiply(a, b) {
+  if (Math.random() < 0.2) {
+    return a * b;
+  } else {
+    throw new MultiplicatorUnitFailure("Klunk");
+  }
+}
+
+function reliableMultiply(a, b) {
+  for (;;) {
+    try {
+      return primitiveMultiply(a, b);
+    } catch (e) {
+      if (!(e instanceof MultiplicatorUnitFailure))
+        throw e;
+    }
+  }
+}
+
+function run81(){
+	document.getElementById("81_output").innerHTML(reliableMultiply(8, 8));
+}
+
+</script>
+
+
+<h1>8.2 - Bugs and Errors - The locked box</h1>
+<button id="run82">Run 8.2</button>
+<div id="82_output"></div>
+
+<script>
+const box = {
+  locked: true,
+  unlock() { this.locked = false; },
+  lock() { this.locked = true;  },
+  _content: [],
+  get content() {
+    if (this.locked) throw new Error("Locked!");
+    return this._content;
+  }
+};
+
+function withBoxUnlocked(body) {
+  let locked = box.locked;
+  if (!locked) {
+    return body();
+  }
+
+  box.unlock();
+  try {
+    return body();
+  } finally {
+    box.lock();
+  }
+}
+
+withBoxUnlocked(function() {
+  box.content.push("gold piece");
+});
+
+try {
+  withBoxUnlocked(function() {
+    throw new Error("Pirates on the horizon! Abort!");
+  });
+} catch (e) {
+  console.log("Error raised:", e);
+}
+
+function run82{
+	document.getElementById("82_output").innerHTML(box.locked);
+}
+
+</script>
+
+
+
+  </body>
+</html>
