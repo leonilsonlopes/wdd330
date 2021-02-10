@@ -44,6 +44,7 @@ export default class utilities {
 		let myStorage = this.myLS.getStorage();
 		this.showToDoList(myStorage);
 		
+		//Avoid showing message if the list is empty
 		(myStorage.length > 0 ? document.getElementById("filterApplied").innerHTML = "Showing all tasks" : "");
 
 	}
@@ -51,14 +52,12 @@ export default class utilities {
 	showToDoListActive(){
 		let myStorage = this.myLS.getStorage();
 		myStorage = myStorage.filter(todo => !todo.completed);
-		alert("Mystorage active: " + JSON.stringify(myStorage));
 		this.showToDoList(myStorage);
 		document.getElementById("filterApplied").innerHTML = "Showing only active tasks";
 	}
 	
 	showToDoListCompleted(){
 		let myStorage = this.myLS.getStorage();
-		alert("Mystorage completed: " + JSON.stringify(myStorage));
 		myStorage = myStorage.filter(todo => todo.completed);
 		this.showToDoList(myStorage);
 		document.getElementById("filterApplied").innerHTML = "Showing only completed tasks";
