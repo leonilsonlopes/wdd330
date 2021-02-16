@@ -2,8 +2,6 @@
 export default class ls {
   constructor(id) {
 	this.id = id;
-	const arr = [];
-	localStorage.setItem(this.id, JSON.stringify(arr));
 	
   }
   
