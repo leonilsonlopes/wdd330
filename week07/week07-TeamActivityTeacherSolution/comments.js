@@ -70,8 +70,8 @@ class Comments {
   }
 
   addSubmitListener(postName) {
-    // use element.click to avoid more than one listener getting attached at a time to the button.
-    document.getElementById('commentSubmit').click = () => {
+    // use element.onclick to avoid more than one listener getting attached at a time to the button.
+    document.getElementById('commentSubmit').onclick = () => {
       // debugger;
       this.model.addComment(
         postName,
