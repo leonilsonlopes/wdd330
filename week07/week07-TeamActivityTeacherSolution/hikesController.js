@@ -29,7 +29,7 @@ export default class HikesController {
     this.hikesView.renderOneHikeFull(
       this.parentElement,
       hike
-    ).click = () => {
+    ).onclick = () => {
       this.showHikeList();
     };
     // show the comments for just this hike
