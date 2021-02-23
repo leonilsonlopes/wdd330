@@ -48,7 +48,7 @@ function renderShipDetails(shipData) {
 }
 
 // controller code
-function showShips(url = "https://swapi.dev/api/starships/") {
+function showShips(url = "http://swapi.dev/api/starships/") {
   getShips(url).then(function (data) {
     console.log(data);
     const results = data.results;
