@@ -64,6 +64,7 @@ function showShips(url = "https://swapi.dev/api/starships/") {
       // normally we would prefer the addEventListener method of adding a listener. Using something like 'element.onEvent = event_function' has the limitation of only being able to hold one listener of the type we choose. In this case that is a good thing however. Because we are not re-creating the buttons each time we load a new batch of data we could end up with several listeners attached to each button by the last page. We won't have that issue here.
       next.onclick = () => {
         // notice to show the next page we just re-call the showShips function with a new URL
+		data.next = (data.next).replace("http","https");
         showShips(data.next);
       };
     }
@@ -71,6 +72,7 @@ function showShips(url = "https://swapi.dev/api/starships/") {
       const prev = document.getElementById("prev");
 
       prev.onclick = () => {
+		data.previous = (data.previous).replace("http","https");
         showShips(data.previous);
       };
     }
