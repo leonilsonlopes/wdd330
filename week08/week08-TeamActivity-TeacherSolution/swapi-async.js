@@ -26,6 +26,7 @@ function renderShipList(ships, shipListElement) {
     //console.log(ship);
     //create elements for list...tr
     let listItem = document.createElement("tr");
+	ship.url = (ship.url).replace("http","https");
     listItem.innerHTML = `
         <td><a href="${ship.url}">${ship.name}</a></td>
         <td>${ship.length}</td>
