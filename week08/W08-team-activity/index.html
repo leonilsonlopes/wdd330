@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8">
+    <title>Week 08 Activity</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      #people {
+        list-style: none;
+        padding: 0;
+      }
+      #people li {
+        cursor: pointer;
+      }
+      button {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Star Wars People</h1>
+    
+    <ul id="people"></ul>
+    
+    <button type="button" onclick="getPrevious();">Previous</button>
+    <div id="page-buttons"></div>
+    <button type="button" onclick="getNext();">Next</button>
+    
+    <hr>
+    <div id="details"></div>
+    
+    <script src="app.js"></script>
+  </body>
+</html>
