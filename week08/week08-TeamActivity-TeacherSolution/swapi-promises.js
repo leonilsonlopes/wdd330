@@ -26,7 +26,6 @@ function renderShipList(ships, shipListElement) {
     //console.log(ship);
     //create elements for list...tr
     let listItem = document.createElement("tr");
-	ship.url = (ship.url).replace("http","https");
     listItem.innerHTML = `
         <td><a href="${ship.url}">${ship.name}</a></td>
         <td>${ship.length}</td>
@@ -71,7 +70,7 @@ function showShips(url = "https://swapi.dev/api/starships/") {
     if (data.previous) {
       const prev = document.getElementById("prev");
 
-      prev.onclick = () => {
+      prev.onclick = () => {		
 		data.previous = (data.previous).replace("http","https");
         showShips(data.previous);
       };
