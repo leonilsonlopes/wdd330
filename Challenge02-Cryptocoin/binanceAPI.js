@@ -10,7 +10,7 @@ export default class binanceAPI {
 	callBinanceAPI(apiGet, params) {
 		let url = apiGet + params;
 		console.log("API Call: " + url);
-  		return fetch(url)
+  		return fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-01-01&endtime=2019-03-02&latitude=0&longitude=0&maxradiuskm=2000")
     	  .then(function(response) {
        	   if (!response.ok) {
        	       throw Error(response.statusText);
