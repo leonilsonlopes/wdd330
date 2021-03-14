@@ -14,7 +14,7 @@ export default class Quake {
   async getEarthQuakesByRadius(position, radius = 100) {
     // use the getJSON function and the position provided to build out the correct URL to get the data we need.  Store it into this._quakes, then return it
     const url = `${this.baseUrl}&latitude=${position.lat}&longitude=${position.lon}&maxradiuskm=${radius}`;
-    
+    console.log("url: " + url);
     this._quakes = await getJSON(url); // note that we did not have "await" before, and this was necessary to assign to this._quakes - otherwise this._quakes and this._quakes.features were both undefined
     console.log("this_quakes: ", this._quakes);
     console.log("features: ", this._quakes.features);
