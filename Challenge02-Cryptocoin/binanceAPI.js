@@ -16,7 +16,7 @@ export default class binanceAPI {
             if (!response.ok) {
                 throw Error(response.statusText);
             } else {
-                console.log("response: + " + JSON.stringify(response));
+                console.log("response: " + JSON.stringify(response));
                 return response.json();
             }
         } catch (error) {

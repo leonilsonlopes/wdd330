@@ -17,7 +17,7 @@ export default class cryptoView {
 		item.setAttribute("data-id", unitaryCoin.id);
 		
 		//Render task content
-		item.innerHTML = unitaryCoin.content;
+		item.innerHTML = unitaryCoin.symbol + ": " + unitaryCoin.price;
 		
 		
 		return item;
