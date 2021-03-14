@@ -11,7 +11,7 @@ export default class binanceAPI {
 		let url = apiGet + params;
 		console.log("API Call: " + url);
   		try {
-            const response = await fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-01-01&endtime=2019-03-02&latitude=0&longitude=0&maxradiuskm=2000");
+            const response = await fetch(url);
             if (!response.ok) {
                 throw Error(response.statusText);
             } else {
@@ -26,7 +26,7 @@ export default class binanceAPI {
 	async getPrice(cryptoSymbol){
 		let params = "?symbol=" + cryptoSymbol + "USDT";
 		let resultSet = await this.callBinanceAPI(this.priceQuery,params);
-		console.log("result set: " + resultSet);
+		console.log("result set: " + JSON.stringify(resultSet));
 		return  resultSet;
 		
 	}
