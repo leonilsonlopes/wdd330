@@ -10,7 +10,9 @@ export default class binanceAPI {
 	async callBinanceAPI(apiGet, params) {
 		
   		try {
-            const response = await fetch(this.baseURL + apiGet + params);
+			let url = apiGet + params;
+			console.log("API Call: " + url)
+            const response = await fetch(url);
             if (!response.ok) {
                 throw Error(response.statusText);
             } else {
