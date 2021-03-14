@@ -16,7 +16,8 @@ export default class Quake {
     const url = `${this.baseUrl}&latitude=${position.lat}&longitude=${position.lon}&maxradiuskm=${radius}`;
     console.log("url: " + url);
     this._quakes = await getJSON(url); // note that we did not have "await" before, and this was necessary to assign to this._quakes - otherwise this._quakes and this._quakes.features were both undefined
-    console.log("this_quakes: ", this._quakes);
+    console.log("response: " + JSON.stringify(this._quakes));
+	console.log("this_quakes: ", this._quakes);
     console.log("features: ", this._quakes.features);
     return this._quakes;
   }

@@ -7,27 +7,26 @@ export default class binanceAPI {
 		this.priceQuery = this.baseURL + "/api/v3/ticker/price";
     }
 
-	callBinanceAPI(apiGet, params) {
+	async callBinanceAPI(apiGet, params) {
 		let url = apiGet + params;
 		console.log("API Call: " + url);
-  		return fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-01-01&endtime=2019-03-02&latitude=0&longitude=0&maxradiuskm=2000")
-    	  .then(function(response) {
-       	   if (!response.ok) {
-       	       throw Error(response.statusText);
-       	   } else {
-				console.log("response: " + JSON.stringify(response.json()));
-        	    return response.json();
-         	 }
-     	 })
-    	  .catch(function(error) {
-        	  console.log(error);
-     	 });
+  		try {
+            const response = await fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-01-01&endtime=2019-03-02&latitude=0&longitude=0&maxradiuskm=2000");
+            if (!response.ok) {
+                throw Error(response.statusText);
+            } else {
+                return response.json();
+            }
+        } catch (error) {
+            console.log(error);
+        }
 	}
 
 
 	async getPrice(cryptoSymbol){
 		let params = "?symbol=" + cryptoSymbol + "USDT";
 		let resultSet = await this.callBinanceAPI(this.priceQuery,params);
+		console.log("result set: " + resultSet);
 		return  resultSet;
 		
 	}
