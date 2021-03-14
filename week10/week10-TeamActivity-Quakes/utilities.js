@@ -4,7 +4,7 @@ export function getJSON(url) {
           if (!response.ok) {
               throw Error(response.statusText);
           } else {
-			  console.log("response: " + JSON.stringify(response));
+			  console.log("response: " + JSON.stringify(response.json()));
               return response.json();
           }
       })
