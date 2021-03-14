@@ -1,5 +1,5 @@
 export function getJSON(url) {
-  return fetch("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT")
+  return fetch("url")
       .then(function(response) {
           if (!response.ok) {
               throw Error(response.statusText);

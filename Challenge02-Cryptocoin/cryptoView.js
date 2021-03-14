@@ -10,7 +10,7 @@ export default class cryptoView {
 	}
   
 	renderOneCoin(unitaryCoin) {
-				
+		console.log("unitary coin: " + unitaryCoin);		
 		const item = document.createElement("li");
 		
 		//Set task id into this list element	
