@@ -3,7 +3,7 @@ import cryptoView from './cryptoView.js';
 
 export default class binanceAPI {
     constructor() {
-        this.baseURL = "https://api.binance.com/api/v3/ticker/price";
+        this.baseURL = "https://api.binance.com";
 		this.priceQuery = this.baseURL + "/api/v3/ticker/price";
     }
 
