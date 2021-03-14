@@ -37,12 +37,12 @@ export default class orchestratorController {
 			"FTT",
 			"TRX",
 			"CHZ",
-			"XEM",			
+			"XEM"			
 			];
 		
 		for(let i=0; i < acceptedCoins.length; i++){
 			
-			let queryResult = this.myBinanceAPI.getPrice(acceptedCoins[1]);
+			let queryResult = this.myBinanceAPI.getPrice(acceptedCoins[i]);
 
 			const coinListElement = document.getElementById(this.coinListId);
 			coinListElement.innerHTML = "";
