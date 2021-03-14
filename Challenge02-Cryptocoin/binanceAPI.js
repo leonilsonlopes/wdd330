@@ -12,7 +12,7 @@ export default class binanceAPI {
   		try {
 			let url = apiGet + params;
 			console.log("API Call: " + url)
-            const response = await fetch(url);
+            const response = fetch(url);
             if (!response.ok) {
                 throw Error(response.statusText);
             } else {
@@ -27,7 +27,7 @@ export default class binanceAPI {
 
 	getPrice(cryptoSymbol){
 		let params = "?symbol=" + cryptoSymbol + "USDT";
-		return this.callBinanceAPI(this.priceQuery,params);
+		return await this.callBinanceAPI(this.priceQuery,params);
 		
 	}
 	
