@@ -1,8 +1,7 @@
-import lsModel from './lsModel.js';
 import binanceAPI from './binanceAPI.js';
 import cryptoView from './cryptoView.js';
 
-export default class utilities {
+export default class orchestratorController {
     constructor(domIdCoinList) {
         this.myBinanceAPI = new binanceAPI();
 		this.myCryptoView = new cryptoView();

@@ -1,7 +1,7 @@
-import orchestrationController from './orchestrationController.js';
+import orchestratorController from './orchestratorController.js';
 
 window.addEventListener("load", () => {
-	const myOrchControl = new orchestrationController(); 	
+	const myOrchControl = new orchestratorController(); 	
 
 	myOrchControl.startPage();
 });
