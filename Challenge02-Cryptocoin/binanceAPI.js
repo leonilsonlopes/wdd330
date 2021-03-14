@@ -27,7 +27,8 @@ export default class binanceAPI {
 
 	getPrice(cryptoSymbol){
 		let params = "?symbol=" + cryptoSymbol + "USDT";
-		return await this.callBinanceAPI(this.priceQuery,params);
+		let resultSet = await this.callBinanceAPI(this.priceQuery,params);
+		return  resultSet;
 		
 	}
 	
