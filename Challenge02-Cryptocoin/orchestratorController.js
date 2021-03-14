@@ -6,6 +6,7 @@ export default class orchestratorController {
         this.myBinanceAPI = new binanceAPI();
 		this.myCryptoView = new cryptoView();
 		this.coinListId = domIdCoinList;
+		
     }
 
 
@@ -45,7 +46,7 @@ export default class orchestratorController {
 
 			const coinListElement = document.getElementById(this.coinListId);
 			coinListElement.innerHTML = "";
-			this.myCryptoView.renderCryptoList(queryResult, coinListElement);
+			this.myCryptoView.renderCryptoList([queryResult], coinListElement);
 		}
 			
 	}
