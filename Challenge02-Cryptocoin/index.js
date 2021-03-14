@@ -1,7 +1,7 @@
-import binanceAPI from './binanceAPI.js';
+import orchestrationController from './orchestrationController.js';
 
 window.addEventListener("load", () => {
-	const myBinanceAPI = new binanceAPI(); 	
+	const myOrchControl = new orchestrationController(); 	
 
-	myBinanceAPI.getPrice("BTC");
+	myOrchControl.startPage();
 });
