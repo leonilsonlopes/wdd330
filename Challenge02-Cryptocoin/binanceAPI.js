@@ -7,7 +7,7 @@ export default class binanceAPI {
 		this.priceQuery = this.baseURL + "/api/v3/ticker/price";
     }
 
-	async callBinanceAPI(apiGet, params) {
+	callBinanceAPI(apiGet, params) {
 		let url = apiGet + params;
 		console.log("API Call: " + url);
   		try {
