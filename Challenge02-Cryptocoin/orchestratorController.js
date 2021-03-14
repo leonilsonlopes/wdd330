@@ -42,7 +42,7 @@ export default class orchestratorController {
 		
 		for(let i=0; i < acceptedCoins.length; i++){
 			
-			let queryResult = this.myBinanceAPI.getPrice("BTC");
+			let queryResult = this.myBinanceAPI.getPrice(acceptedCoins[1]);
 
 			const coinListElement = document.getElementById(this.coinListId);
 			coinListElement.innerHTML = "";
