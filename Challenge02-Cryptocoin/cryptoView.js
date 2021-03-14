@@ -3,33 +3,24 @@ export default class cryptoView {
 
     }
 
-	renderToDoList(todoList, divToDoList) {
-			todoList.forEach(todo => {
-			divToDoList.appendChild(this.renderOneTask(todo));
+	renderCryptoList(coinList, divCoinList) {
+			coinList.forEach(coin => {
+			divCoinList.appendChild(this.renderOneCoin(coin));
 		});
 	}
   
-	renderOneTask(todoElement) {
+	renderOneCoin(unitaryCoin) {
 		const item = document.createElement("li");
 		
-		//Render checked item
-		(todoElement.completed ? item.className = 'checked' : "");
 		//Set task id into this list element	
-		item.setAttribute("data-id", todoElement.id);
-		//Render task content
-		item.innerHTML = todoElement.content;
+		item.setAttribute("data-id", unitaryCoin.id);
 		
-		//Render close button
-		item.appendChild(this.createCloseButton(todoElement.id));
+		//Render task content
+		item.innerHTML = unitaryCoin.content;
+		
 		
 		return item;
 	}
 	
-	createCloseButton(id){
-		const closeBt = document.createElement("span");
-		closeBt.className = "close";
-		closeBt.innerHTML = "X";
-		closeBt.setAttribute("data-id", id);
-		return closeBt;
-	}
+
 }

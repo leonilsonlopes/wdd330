@@ -7,10 +7,10 @@ export default class binanceAPI {
 		this.priceQuery = this.baseURL + "/api/v3/ticker/price";
     }
 
-	async callBinanceAPI(query, params) {
+	async callBinanceAPI(apiGet, params) {
 		
   		try {
-            const response = await fetch(query + params);
+            const response = await fetch(this.baseURL + apiGet + params);
             if (!response.ok) {
                 throw Error(response.statusText);
             } else {
@@ -25,7 +25,7 @@ export default class binanceAPI {
 
 	getPrice(cryptoSymbol){
 		let params = "?symbol=" + cryptoSymbol + "USDT";
-		this.callBinanceAPI(this.priceQuery,params)	;
+		return this.callBinanceAPI(this.priceQuery,params);
 		
 	}
 	
