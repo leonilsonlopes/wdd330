@@ -7,20 +7,19 @@ export default class binanceAPI {
 		this.priceQuery = this.baseURL + "/api/v3/ticker/price";
     }
 
-	callBinanceAPI(query, params) {
+	async callBinanceAPI(query, params) {
 		
-  		return fetch(query + params)
-      		.then(function(response) {
-          if (!response.ok) {
-              throw Error(response.statusText);
-          } else {
-				alert(response);
-              return response.json();
-          }
-      })
-      .catch(function(error) {
-          console.log(error);
-      });
+  		try {
+            const response = await fetch(query + params);
+            if (!response.ok) {
+                throw Error(response.statusText);
+            } else {
+                alert(response);
+                return response.json();
+            }
+        } catch (error) {
+            console.log(error);
+        }
 	}
 
 
