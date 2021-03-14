@@ -10,11 +10,44 @@ export default class orchestratorController {
 
 
 	showListOfCoins(){
-		let myStorage = this.myBinanceAPI.getPrice("BTC");
+		
+		let acceptedCoins = [
+			"BTC", 
+			"ETH", 
+			"BNB", 
+			"ADA", 
+			"DOT", 
+			"XRP", 
+			"UNI", 
+			"LTC", 
+			"LINK", 
+			"BCH", 
+			"XLM", 
+			"DOGE", 
+			"THETA", 
+			"LUNA", 
+			"AAVE", 
+			"VET", 
+			"XMR", 
+			"ATOM",
+			"EOS",
+			"SOL",
+			"AVAX",
+			"FTT",
+			"TRX",
+			"CHZ",
+			"XEM",			
+			];
+		
+		for(let i=0; i < acceptedCoins.length; i++){
+			
+			let queryResult = this.myBinanceAPI.getPrice("BTC");
 
-		const coinListElement = document.getElementById(this.coinListId);
-		coinListElement.innerHTML = "";
-		this.myCryptoView.renderCryptoList(myStorage, coinListElement);	
+			const coinListElement = document.getElementById(this.coinListId);
+			coinListElement.innerHTML = "";
+			this.myCryptoView.renderCryptoList(queryResult, coinListElement);
+		}
+			
 	}
 	
 	
