@@ -1,5 +1,7 @@
 export default class cryptoView {
-    constructor() {
+	
+    constructor() {	
+		this.tickerCounter = 0;
 
     }
 
@@ -10,19 +12,73 @@ export default class cryptoView {
 	}
   
 	renderOneCoin(unitaryCoin) {
+		
+		this.tickerCounter++
+		
+		
 		console.log("unitary coin: " + JSON.stringify(unitaryCoin));		
-		const item = document.createElement("li");
+		let firstLevelDiv = document.createElement("div");
+		firstLevelDiv.classList.add("mt-3");
 		
-		//Set task id into this list element	
-		item.setAttribute("data-id", unitaryCoin.id);
+		let secondLevelDiv = document.createElement("div");
+		firstLevelDiv.appendChild(secondLevelDiv);
+		secondLevelDiv.classList.add("d-flex");
+		secondLevelDiv.classList.add("justify-content-between");
+		secondLevelDiv.classList.add("align-items-center");
 		
-		console.log("coin attributes: " + unitaryCoin.symbol + ": " + unitaryCoin.price);
-		//Render task content
-		item.innerHTML = unitaryCoin.symbol + ": " + unitaryCoin.price;
+			
+		let thirdLevelDiv = document.createElement("div");
+		secondLevelDiv.appendChild(thirdLevelDiv);
+		thirdLevelDiv.classList.add("d-flex");
+		thirdLevelDiv.classList.add("flex-row");
+		thirdLevelDiv.classList.add("align-items-center");
 		
+		let secondLevelSpanticker = document.createElement("span");
+		secondLevelDiv.appendChild(secondLevelSpanticker);
+		secondLevelSpanticker.classList.add("content-text-" + this.tickerCounter);
+		secondLevelSpanticker.innerText = unitaryCoin.ticker;
 		
-		return item;
+		let coinIcon = document.createElement("span");
+		thirdLevelDiv.appendChild(coinIcon);
+		coinIcon.classList.add("star");
+		coinIcon.classList.add("wd-50");
+		coinIcon.classList.add("avatar");
+		let coinIconImg = document.createElement("img");
+		coinIcon.appendChild(coinIconImg);
+		coinIconImg.src = "img\\coinIcons\\" + unitaryCoin.ticker + ".png";
+		
+		let coinNameSpan = document.createElement("span");
+		thirdLevelDiv.appendChild(coinNameSpan);
+		coinNameSpan.classList.add("innercontent-text");
+		coinNameSpan.innerText = unitaryCoin.name;
+		
+		let coinPriceSpan = document.createElement("span");
+		thirdLevelDiv.appendChild(coinPriceSpan);
+		coinPriceSpan.classList.add("innercontent-text");
+		coinPriceSpan.innerText = "$ " + (Number(unitaryCoin.lastPrice).toFixed(2));
+		
+		/**
+		let contentColumnDiv = document.createElement("div");
+		thirdLevelDiv.appendChild(contentColumnDiv);
+		contentColumnDiv.classList.add("d-flex");
+		contentColumnDiv.classList.add("flex-column");
+		contentColumnDiv.setAttribute("data-ticker", unitaryCoin.ticker);
+		
+		let coinNameSpan = document.createElement("span");
+		contentColumnDiv.appendChild(coinNameSpan);
+		coinNameSpan.innerText = unitaryCoin.name;
+		
+		let coinPriceSpan = document.createElement("span");
+		contentColumnDiv.appendChild(coinPriceSpan);
+		coinPriceSpan.innerText = unitaryCoin.price;
+		**/
+		
+		if(this.tickerCounter >= 3)
+			this.tickerCounter = 0;
+	
+		return firstLevelDiv;
 	}
 	
 
 }
+
