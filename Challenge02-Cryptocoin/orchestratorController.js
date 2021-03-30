@@ -14,10 +14,11 @@ export default class orchestratorController {
 
 	async showListOfCoins(){
 		
-		let acceptedCoins = this.myLocalStorage.getStorage();
+		let acceptedCoins = new lsModel("cryptoWatcher").getStorage();
 
-		const coinListElement = document.getElementById(this.coinListId);
-			this.myCryptoView.renderCryptoList(acceptedCoins, coinListElement);
+		const coinListElement = document.getElementById("coinList");
+		coinListElement.innerHTML = "";
+		new cryptoView().renderCryptoList(acceptedCoins, coinListElement);
 			
 	}
 	
@@ -54,11 +55,15 @@ export default class orchestratorController {
 	
 	startPage() {
 		
-		this.showListOfCoins();
-		
-		//setInterval(this.updatePrice, 1000);
-		
 		this.updatePrice();
+		setInterval(this.updatePrice, 3000);
+		
+		this.showListOfCoins();		
+		setInterval(this.showListOfCoins, 3000);
+		
+		
+		
+	
 	
 	}
 

@@ -83,12 +83,7 @@ export default class ls {
 		xlm.lastPrice = "retrieving data...";
 		initialCryptoDB.push(xlm);
 		
-		let wbtc = {};
-		wbtc.ticker = "WBTC";
-		wbtc.name = "Wrapped Bitcoin";
-		wbtc.lastPrice = "retrieving data...";
-		initialCryptoDB.push(wbtc);
-		
+
 		let fil = {};
 		fil.ticker = "FIL";
 		fil.name = "Filecoin";
@@ -113,11 +108,6 @@ export default class ls {
 		vet.lastPrice = "retrieving data...";
 		initialCryptoDB.push(vet);
 		
-		let cro = {};
-		cro.ticker = "CRO";
-		cro.name = "Crypto.com Coin";
-		cro.lastPrice = "retrieving data...";
-		initialCryptoDB.push(cro);
 		
 		let sol = {};
 		sol.ticker = "SOL";
