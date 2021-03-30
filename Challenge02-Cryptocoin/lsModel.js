@@ -70,11 +70,6 @@ export default class ls {
 		link.lastPrice = "retrieving data...";
 		initialCryptoDB.push(link);
 		
-		let klay = {};
-		klay.ticker = "KLAY";
-		klay.name = "Klaytn";
-		klay.lastPrice = "retrieving data...";
-		initialCryptoDB.push(klay);
 		
 		let bch = {};
 		bch.ticker = "BCH";
