@@ -15,7 +15,10 @@ export default class ls {
 
 	getStorage(){
 		//Get string from storage and parse it
-		return JSON.parse(localStorage.getItem(this.id));
+		if (localStorage.getItem(this.id))
+			return JSON.parse(localStorage.getItem(this.id));	
+		else
+			return [];
 	}
 	
 	comitStorage(value){
