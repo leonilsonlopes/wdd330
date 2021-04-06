@@ -4,34 +4,31 @@ import lsModel from './lsModel.js';
 
 export default class orchestratorController {
     constructor(domIdCoinList) {
-        this.myBinanceAPI = new binanceAPI();
 		this.myCryptoView = new cryptoView();
 		this.coinListId = domIdCoinList;
-		this.myLocalStorage = new lsModel("cryptoWatcher");
 		
+		this.intervalUpdatePriceDB;
+		this.intervalUpdatePriceOnPage;
+			
     }
 
 
-	async showListOfCoins(){
-		
-		let acceptedCoins = new lsModel("cryptoWatcher").getStorage();
-
+	showListOfCoins(){
+		//console.log("showListofCoins - filter: " + document.getElementById("filterInput").value);
+		let acceptedCoins = new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
 		const coinListElement = document.getElementById("coinList");
 		coinListElement.innerHTML = "";
-		new cryptoView().renderCryptoList(acceptedCoins, coinListElement);
+		new cryptoView(this).renderCryptoList(acceptedCoins, coinListElement);
 			
 	}
 	
 	
-	async updatePrice(){
+	async updatePriceDB(){
 		
-		//let myMyLocalStorage = this.myLocalStorage;
 		let myMyLocalStorage = new lsModel("cryptoWatcher");
-		console.log("this.myLocalStorage: " + this.myLocalStorage);
-		console.log("myMyLocalStorage: " + JSON.stringify(myMyLocalStorage));
 		let acceptedCoins = myMyLocalStorage.getStorage();
 		let myMyBinanceAPI = new binanceAPI();
-		
+
 
 	
 			for(let i=0; i < acceptedCoins.length; i++){
@@ -39,7 +36,7 @@ export default class orchestratorController {
 				//console.log("accepted coin: " + acceptedCoins[i.ticker]);
 				let queryResult = await myMyBinanceAPI.getPrice(acceptedCoins[i].ticker);
 				
-				console.log("queryResult: " + JSON.stringify(queryResult));
+				//console.log("queryResult: " + JSON.stringify(queryResult));
 				
 				if(!queryResult)
 					continue;
@@ -48,21 +45,49 @@ export default class orchestratorController {
 	
 				
 			}
+			
 	
 	}
+	
 
+	async updatePricesOnPage(){
+		//console.log("updatePricesOnPage - filter: " + document.getElementById("filterInput").value);
+		let acceptedCoins = new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
+		
+		for(let i=0; i < acceptedCoins.length; i++){				
+				await new cryptoView().updatePriceUnitaryCoin(acceptedCoins[i].ticker, acceptedCoins[i].lastPrice);				
+		}
+	}
 	
 	
-	startPage() {
+	
+	showListOfCoinsPage() {
 		
-		this.updatePrice();
-		setInterval(this.updatePrice, 3000);
+		//Render CryptoList Page
+		this.myCryptoView.renderCryptoListDiv();
 		
+		//Enable "this" inside addEventListener functions
+		let upperThis = this;
+		
+		//Enable filter
+		document.getElementById("filterInput").addEventListener("keyup", function(){				
+				//console.log("filter: " + document.getElementById("filterInput").value);		
+				upperThis.showListOfCoins();
+		});
+		
+		
+		//Updates or creates prices info on DB
+		this.updatePriceDB();
+		//Independently updates price info on DB each 3 seconds
+		this.intervalUpdatePriceDB = setInterval(this.updatePriceDB, 3000);			
+		
+		
+		//Render prices on page
 		this.showListOfCoins();		
-		setInterval(this.showListOfCoins, 3000);
+		//Independently render new prices updates on page		
+		this.intervalUpdatePriceOnPage = setInterval(this.updatePricesOnPage, 3000);
 		
-		
-		
+				
 	
 	
 	}
