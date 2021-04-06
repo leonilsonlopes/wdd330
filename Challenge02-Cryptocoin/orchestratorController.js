@@ -13,9 +13,9 @@ export default class orchestratorController {
     }
 
 
-	showListOfCoins(){
+	async showListOfCoins(){
 		//console.log("showListofCoins - filter: " + document.getElementById("filterInput").value);
-		let acceptedCoins = new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
+		let acceptedCoins = await new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
 		const coinListElement = document.getElementById("coinList");
 		coinListElement.innerHTML = "";
 		new cryptoView(this).renderCryptoList(acceptedCoins, coinListElement);
