@@ -1,4 +1,4 @@
-import coinGeckoAPI from './coinGeckoAPI.js';
+import binanceAPI from './binanceAPI.js';
 import cryptoView from './cryptoView.js';
 import lsModel from './lsModel.js';
 
@@ -35,14 +35,14 @@ export default class orchestratorController {
 		if(myMyLocalStorage.isDataBaseReady()){
 		
 			let acceptedCoins = myMyLocalStorage.getStorage();
-			let myMycoinGeckoAPI = new coinGeckoAPI();
+			let myMyBinanceAPI = new binanceAPI();
 	
 	
 		
 				for(let i=0; i < acceptedCoins.length; i++){
 					
 					//console.log("accepted coin: " + acceptedCoins[i.ticker]);
-					let queryResult = await myMycoinGeckoAPI.getPrice(acceptedCoins[i].id);
+					let queryResult = await myMyBinanceAPI.getPrice(acceptedCoins[i].ticker);
 					
 					//console.log("queryResult: " + JSON.stringify(queryResult));
 					

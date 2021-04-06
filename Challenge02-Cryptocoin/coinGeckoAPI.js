@@ -55,7 +55,7 @@ export default class coinGeckoAPI {
 			console.log("resultSet: " + JSON.stringify(resultSet));
 			return  resultSet;
 		}catch(err){
-			console.log("ERROR CALLING: url: " + this.priceQuery + " - params: " + params + "\nError: " + err.message);
+			console.log("ERROR CALLING: url: " + this.priceQuery + " - params: " + coinId + "\nError: " + err.message);
 			return;
 		}
 		
