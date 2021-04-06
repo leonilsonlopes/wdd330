@@ -7,7 +7,7 @@ export default class coinGeckoAPI {
 
 	async callGeckoAPI(apiGet, params) {
 		let url = apiGet + params;
-		console.log("Gecko API Call: " + url);
+		//console.log("Gecko API Call: " + url);
   		try {
             const response = await fetch(url);
             if (!response.ok) {

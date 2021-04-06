@@ -3,59 +3,71 @@ import cryptoView from './cryptoView.js';
 import lsModel from './lsModel.js';
 
 export default class orchestratorController {
+	
     constructor(domIdCoinList) {
 		this.myCryptoView = new cryptoView();
+		this.myLsModel = new lsModel(this);
 		this.coinListId = domIdCoinList;
 		
 		this.intervalUpdatePriceDB;
 		this.intervalUpdatePriceOnPage;
+		this.intervalShowListOfCoins;
 			
     }
 
 
-	async showListOfCoins(){
-		//console.log("showListofCoins - filter: " + document.getElementById("filterInput").value);
-		let acceptedCoins = await new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
-		const coinListElement = document.getElementById("coinList");
-		coinListElement.innerHTML = "";
-		new cryptoView(this).renderCryptoList(acceptedCoins, coinListElement);
-			
+	showListOfCoins(){
+				
+		if(this.myLsModel.isDataBaseReady()){					
+			let acceptedCoins = this.myLsModel.getStorage(document.getElementById("filterInput").value);		
+			const coinListElement = document.getElementById("coinList");
+			coinListElement.innerHTML = "";
+			new cryptoView(this).renderCryptoList(acceptedCoins, coinListElement);			
+		}
 	}
 	
 	
 	async updatePriceDB(){
 		
-		let myMyLocalStorage = new lsModel("cryptoWatcher");
-		let acceptedCoins = myMyLocalStorage.getStorage();
-		let myMyBinanceAPI = new binanceAPI();
-
-
+		let myMyLocalStorage = new lsModel();
+		
+		
+		if(myMyLocalStorage.isDataBaseReady()){
+		
+			let acceptedCoins = myMyLocalStorage.getStorage();
+			let myMyBinanceAPI = new binanceAPI();
 	
-			for(let i=0; i < acceptedCoins.length; i++){
-				
-				//console.log("accepted coin: " + acceptedCoins[i.ticker]);
-				let queryResult = await myMyBinanceAPI.getPrice(acceptedCoins[i].ticker);
-				
-				//console.log("queryResult: " + JSON.stringify(queryResult));
-				
-				if(!queryResult)
-					continue;
-				
-				myMyLocalStorage.setLastPrice(acceptedCoins[i].ticker, queryResult.price);
 	
-				
-			}
+		
+				for(let i=0; i < acceptedCoins.length; i++){
+					
+					//console.log("accepted coin: " + acceptedCoins[i.ticker]);
+					let queryResult = await myMyBinanceAPI.getPrice(acceptedCoins[i].ticker);
+					
+					//console.log("queryResult: " + JSON.stringify(queryResult));
+					
+					if(!queryResult)
+						continue;
+					
+					myMyLocalStorage.setLastPrice(acceptedCoins[i].ticker, queryResult.price);
+		
+					
+				}
 			
+			}
 	
 	}
 	
 
 	async updatePricesOnPage(){
-		//console.log("updatePricesOnPage - filter: " + document.getElementById("filterInput").value);
-		let acceptedCoins = new lsModel("cryptoWatcher").getStorage(document.getElementById("filterInput").value);
 		
-		for(let i=0; i < acceptedCoins.length; i++){				
-				await new cryptoView().updatePriceUnitaryCoin(acceptedCoins[i].ticker, acceptedCoins[i].lastPrice);				
+		let myLsModel = new lsModel();
+		if(myLsModel.isDataBaseReady() && document.getElementById("filterInput") != null){
+			let acceptedCoins = myLsModel.getStorage(document.getElementById("filterInput").value);
+		
+			for(let i=0; i < acceptedCoins.length; i++){				
+					await new cryptoView().updatePriceUnitaryCoin(acceptedCoins[i].ticker, acceptedCoins[i].lastPrice);				
+			}
 		}
 	}
 	
@@ -75,6 +87,7 @@ export default class orchestratorController {
 				upperThis.showListOfCoins();
 		});
 		
+				
 		
 		//Updates or creates prices info on DB
 		this.updatePriceDB();
@@ -83,14 +96,16 @@ export default class orchestratorController {
 		
 		
 		//Render prices on page
-		this.showListOfCoins();		
+		this.showListOfCoins();
+		
+				
 		//Independently render new prices updates on page		
 		this.intervalUpdatePriceOnPage = setInterval(this.updatePricesOnPage, 3000);
 		
 				
 	
-	
 	}
+	
 
 
 }

@@ -56,8 +56,6 @@ export default class cryptoView {
 		secondLevelDiv.classList.add("align-items-center");
 		let upperThis = this;
 		secondLevelDiv.addEventListener("click", function(){
-			clearInterval(upperThis.orchClass.intervalUpdatePriceOnPage);
-			clearInterval(upperThis.orchClass.intervalUpdatePriceDB);
 		    upperThis.renderTickerDetail(unitaryCoin);
 		}, false);
 		

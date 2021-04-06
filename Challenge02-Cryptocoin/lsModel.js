@@ -1,13 +1,15 @@
 // Cryptocoin Object Model
 import coinGeckoAPI from './coinGeckoAPI.js';
-export default class ls {
-  constructor(id) {
-	this.id = id;
+import orchestratorController from './orchestratorController.js';
+
+export default class lsModel {
+  constructor() {
+	this.id = "cryptoWatcher";
 	
-	if(localStorage.getItem(this.id)){
+	if(this.isDataBaseReady()){
 		//console.log("Local Storage Found");
 	}else{
-		//console.log("Local Storage not found! Building it!")
+		console.log("Local Storage not found! Building it!")
 		
 		let initialCryptoDB = [];
 		
@@ -37,15 +39,11 @@ export default class ls {
 			];
 			
 			let mycoinGeckoAPI = new coinGeckoAPI();
-			console.log("coinGeckoIdsAcceptedCoins.length: " + coinGeckoIdsAcceptedCoins.length);
 			for(let i=0; coinGeckoIdsAcceptedCoins.length > i; i++){
 				
-				console.log("i = " + i + "\ncoinID = " + coinGeckoIdsAcceptedCoins[i]);
+	
 				let coinInfoObj = {};
 				let apiResult = await mycoinGeckoAPI.getCoinInfo(coinGeckoIdsAcceptedCoins[i]);
-				
-				//console.log("id: " + coinGeckoIdsAcceptedCoins[0]);
-				console.log("geckoAPI result: " + JSON.stringify(apiResult));
 				
 				coinInfoObj.id = coinGeckoIdsAcceptedCoins[i];
 				coinInfoObj.name = apiResult.name;
@@ -58,11 +56,13 @@ export default class ls {
 				initialCryptoDB.push(coinInfoObj);
 			}
 			
-			localStorage.setItem(upperThis.id, JSON.stringify(initialCryptoDB))
+			localStorage.setItem(upperThis.id, JSON.stringify(initialCryptoDB));
+			new orchestratorController().showListOfCoins();
 			
 		}
 		
 		buildDB();
+		
 
 	}
 	
@@ -118,8 +118,13 @@ export default class ls {
 		
 	}
 
-	getLastTickerPricer(coinTicker){
-		
+	isDataBaseReady(){
+		if(localStorage.getItem(this.id))
+			return true;
+		else
+			return false;
+			
+		 
 	}
 
 
