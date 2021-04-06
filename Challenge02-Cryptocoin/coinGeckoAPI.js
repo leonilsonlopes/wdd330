@@ -1,7 +1,8 @@
 export default class coinGeckoAPI {
     constructor() {
-        this.baseURL = "https://api.coingecko.com/api/v3/coins";
-		this.listAllQuery = this.baseURL + "/list";
+        this.baseURL = "https://api.coingecko.com/api/v3";
+		this.listAllQuery = this.baseURL + "/coins/list";
+		this.lastPriceQuery = this.baseURL + "/simple/price?vs_currencies=usd&ids=";		
 		
     }
 
@@ -22,7 +23,7 @@ export default class coinGeckoAPI {
 
 
 	async getLastPriceHistory(numOfDays, coinId){
-		let params = "/" + coinId + "/market_chart?vs_currency=usd&days=" + numOfDays + "&interval=daily";
+		let params = "/coins/" + coinId + "/market_chart?vs_currency=usd&days=" + numOfDays + "&interval=daily";
 		try{	
 			let resultSet = await this.callGeckoAPI(this.baseURL,params);		
 			return  resultSet;
@@ -34,7 +35,7 @@ export default class coinGeckoAPI {
 	}
 	
 	async getCoinInfo(coinId){
-		let params = "/" + coinId + "?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false";
+		let params = "/coins/" + coinId + "?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false";
 		try{	
 			let resultSet = await this.callGeckoAPI(this.baseURL,params);
 			//console.log("GeckoAPI getCoinInfo: " + JSON.stringify(resultSet));		
@@ -44,6 +45,21 @@ export default class coinGeckoAPI {
 			return;
 		}		
 			
+	}
+	
+	async getPrice(coinId){
+				
+		try{
+			let resultSet = await this.callGeckoAPI(this.lastPriceQuery,coinId);
+			resultSet.price = resultSet[coinId].usd;
+			console.log("resultSet: " + JSON.stringify(resultSet));
+			return  resultSet;
+		}catch(err){
+			console.log("ERROR CALLING: url: " + this.priceQuery + " - params: " + params + "\nError: " + err.message);
+			return;
+		}
+		
+	
 	}
 	
 
