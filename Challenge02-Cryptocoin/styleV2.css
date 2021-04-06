@@ -157,6 +157,10 @@ body {
      margin-top: 20px;
  }
 
+.loadingIcon {
+     margin: 100px;
+ }
+
 .chartTitle{
 	margin-top: 40px;
 }

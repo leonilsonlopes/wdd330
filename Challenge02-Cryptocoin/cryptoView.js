@@ -32,12 +32,38 @@ export default class cryptoView {
 		baseDiv.appendChild(coinListDiv);
 		coinListDiv.id = "coinList";
 		
+		//add loading icon
+		baseDiv.appendChild(this.renderLoadingIcon(baseDiv));
+		
 	}
-
+	
+	renderLoadingIcon(parentDiv){
+		let loadingDiv = document.createElement("div");
+		parentDiv.appendChild(loadingDiv);
+		loadingDiv.id = "loadingIconDiv";
+		loadingDiv.classList.add("spinner-border");
+		loadingDiv.classList.add("loadingIcon");
+		loadingDiv.role = "status";
+		let loadingSpan = document.createElement("span");
+		loadingDiv.appendChild(loadingSpan);
+		loadingSpan.classList.add("sr-only");
+		loadingSpan.innerText = "Loadin...";
+		
+		return loadingDiv;
+	}
+	
+	clearLoadingIcon(){
+		let loadingDiv = document.getElementById("loadingIconDiv");
+		loadingDiv.remove();
+	}
+	
 	renderCryptoList(coinList, divCoinList) {
 			coinList.forEach(coin => {
 			divCoinList.appendChild(this.renderOneCoin(coin));
 		});
+		
+		if(document.getElementById("loadingIconDiv") != null)
+			this.clearLoadingIcon();
 	}
   
 	renderOneCoin(unitaryCoin) {
@@ -143,6 +169,9 @@ export default class cryptoView {
 			upperThis.orchClass.showListOfCoinsPage();			
 		}, false);
 		//////////////////////////////////////////
+		
+		//add loading icon
+		baseDiv.appendChild(this.renderLoadingIcon(baseDiv));
 		
 
 		//Price Variation History Chart Rendering - Title
@@ -276,6 +305,9 @@ export default class cryptoView {
 		descContentP.innerHTML = (unitaryCoin.description).replaceAll("\r\n","<br/>");
 		descContentP.classList.add("chartTitle");
 		
+		//remove loading Icon
+		if(document.getElementById("loadingIconDiv") != null)
+			this.clearLoadingIcon();
 		
 	}
 	

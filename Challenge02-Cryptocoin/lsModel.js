@@ -34,8 +34,7 @@ export default class lsModel {
 				"stellar",
 				"filecoin",
 				"terra-luna",
-				"solana",
-				"bittorrent-2"			
+				"solana"			
 			];
 			
 			let mycoinGeckoAPI = new coinGeckoAPI();

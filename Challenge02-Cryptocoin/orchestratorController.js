@@ -18,7 +18,7 @@ export default class orchestratorController {
 
 	showListOfCoins(){
 				
-		if(this.myLsModel.isDataBaseReady()){					
+		if(this.myLsModel.isDataBaseReady() && document.getElementById("filterInput") != null){					
 			let acceptedCoins = this.myLsModel.getStorage(document.getElementById("filterInput").value);		
 			const coinListElement = document.getElementById("coinList");
 			coinListElement.innerHTML = "";
